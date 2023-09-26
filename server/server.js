@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser';
 dotenv.config();
 
 import AuthRoute from "./Routes/AuthRoute.js";
+import UserVerifyRoute from "./Routes/UserVerificationRoute.js";
 
 const app = express();
 app.use(express.json());
@@ -28,7 +29,9 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-app.use("/", AuthRoute);
+app.use("/", AuthRoute);  // for login & signup
+app.use("/", UserVerifyRoute)
+
 
 const port = process.env.PORT;
 const db = process.env.DB;
