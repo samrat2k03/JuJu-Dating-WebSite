@@ -2,7 +2,7 @@ import User from '../Model/UserModel.js';
 import createSecretToken from '../Util/SecretToken.js';
 import bcrypt from 'bcrypt';
 
-export const SignUp = async (req, res, next) => {
+export const SignUp = async(req, res, next) => {
     try {
         const{ email, password, username, createdAt } = req.body;
         const existingUser = await User.findOne({ email });
@@ -16,9 +16,11 @@ export const SignUp = async (req, res, next) => {
             httpOnly: false,
           });
         res.status(201).json({ message: "User signed in successfully", success: true, user });
-        next();
+        // Redirect to the /redirect route after successful signup
+        res.redirect('/redirect');
     } catch (error) {
         console.error(error)
+        next();
     }
 }
 
@@ -43,7 +45,8 @@ export const Login = async(req, res, next) => {
           });
           res.status(201).json({ message: "User logged in successfully", success: true });
           next()
+          res.redirect('/home');
     } catch (error) {
-        console.error(error);s
+        console.error(error);
     }
 }
