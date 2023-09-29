@@ -7,7 +7,7 @@ export const SignUp = async(req, res, next) => {
         const{ email, password, username, createdAt } = req.body;
         const existingUser = await User.findOne({ email });
         if (existingUser){
-            return resizeBy.json({ message: "User Already Exists" })
+            return res.json({ message: "User Already Exists" })
         };
         const user = await User.create({ email, password, username, createdAt });
         const token = createSecretToken(user._id);
@@ -16,11 +16,9 @@ export const SignUp = async(req, res, next) => {
             httpOnly: false,
           });
         res.status(201).json({ message: "User signed in successfully", success: true, user });
-        // Redirect to the /redirect route after successful signup
-        res.redirect('/redirect');
+        next();
     } catch (error) {
         console.error(error)
-        next();
     }
 }
 
@@ -43,9 +41,8 @@ export const Login = async(req, res, next) => {
             withCredentials: true,
             httpOnly: false,
           });
-          res.status(201).json({ message: "User logged in successfully", success: true });
+          res.status(201).json({ message: "User logged in successfully", success: true, user });
           next()
-          res.redirect('/home');
     } catch (error) {
         console.error(error);
     }

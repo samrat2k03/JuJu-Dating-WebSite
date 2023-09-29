@@ -12,7 +12,8 @@ export const userVerification = (req, res) => {
         if(err){
             return res.json({ status:false })
         }else{
-            const user = await User.findById(data.id)
+            const userId = data.id;
+            const user = await User.findById(userId)
             if(user){
                 return res.json({ status:true, user: user.username })
             }else{

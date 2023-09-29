@@ -35,6 +35,11 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(cors({
+  origin: 'http://localhost:5173', 
+  credentials: true, 
+}));
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "/assets");
@@ -46,7 +51,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.use("/api/auth/", AuthRoute);  //for login & signup
-app.use("/", UserVerifyRoute)
+app.use("/", UserVerifyRoute);
 
 
 const port = process.env.PORT;

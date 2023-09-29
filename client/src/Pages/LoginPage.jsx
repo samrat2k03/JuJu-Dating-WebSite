@@ -11,7 +11,7 @@ function LoginPage() {
     email: '',
     password: '',
   });
-
+  // console.log(logformData)
   const { email, password } = logformData;
   
   const onChange = (e) => {
@@ -30,12 +30,14 @@ function LoginPage() {
       if (success) {
         alert(message);
         navigate('/home');
+        console.log(response.data);
+      }else{
+        alert("invalid credentials")
       }
     } catch (error) {
-      console.error(err.response.data);
+      console.log(error)
     }
   }
-
   return (
     <div className="lg:bg-gray-200 min-sm:flex-col w-full min-sm:w-1 flex xl:flex-row flex-col justify-center min-h-screen gap-0 max-container min-sm:gap-[10px]">
       {/* left side */}
