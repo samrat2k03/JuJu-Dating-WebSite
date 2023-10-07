@@ -42,12 +42,29 @@ Follow these instructions to get a local copy of the Juju Dating project up and 
    ```bash
    yarn dev
    ```
-        
+### Configure environment variables:
+modify `.env` file in the server directory with the following content:
+
+```bash
+PORT = 3001
+DB = place your mongodb uri
+JWT_TOKEN = your_jwt_secret (or) just give strong string of characters
+```
+🛠️ Customize the placeholders with your actual values for a seamless experience.
+
 ### Contribution
+We welcome contributions from the community to make Juju Dating Website even better. If you'd like to contribute, please:
+
+#### Fork the repository.
+- Create a new branch for your feature or bug fix.
+-  Make your changes and submit a pull request.
+- For major changes, please open an issue first to discuss your ideas and proposed changes.
+
 > I've create a just a login & signup page 
 - contribution based on Enhancing the dating website's functionality.
 - add new features of this project
 
-  <center>
-    Peace ✌
-  </center>
+### License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+<p align="center">Peace ✌</p>
