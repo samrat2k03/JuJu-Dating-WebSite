@@ -16,7 +16,7 @@ Follow these instructions to get a local copy of the Juju Dating project up and 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/juju-dating.git
+   git clone https://github.com/samrat2k03/JuJu-Dating-WebSite.git
    ```
 2. Run sever
    Navigate to the server directory:
