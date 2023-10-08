@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function LoginPage() {
+  
 
   const navigate = useNavigate();
 
@@ -28,13 +33,22 @@ function LoginPage() {
       const response = await axios.post('http://localhost:3001/api/auth/login', user);
       const { success, message } = response.data;
       if (success) {
-        alert(message);
+        toast.success('login successfully', {
+          position: toast.POSITION.TOP_RIGHT
+      });
         navigate('/home');
+        
         console.log(response.data);
       }else{
-        alert("invalid credentials")
+        toast.info('invalid credentials', {
+          position: toast.POSITION.TOP_RIGHT
+      });
+       
       }
     } catch (error) {
+      toast.error(error, {
+      position: toast.POSITION.TOP_RIGHT
+  });
       console.log(error)
     }
   }
@@ -90,7 +104,9 @@ function LoginPage() {
         </div>
       </div>
       <div className='w-10'></div>
+     
     </div>
+    
   );
 }
 
