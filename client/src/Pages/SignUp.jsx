@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {  ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function SignUp() {
 
@@ -31,13 +34,18 @@ function SignUp() {
       const response = await axios.post('http://localhost:3001/api/auth/signup', newUser);
       const { success, message } = response.data;
       if (success) {
-        alert(message);
+        toast.success(message, {
+          position: toast.POSITION.TOP_RIGHT
+      });
         navigate('/home');
       }
       console.log(response.data);
     } catch (error) {
       console.log(error);
-      alert("Already registered")
+      toast.error('alredy registered', {
+        position: toast.POSITION.TOP_RIGHT
+    });
+      // alert("Already registered")
     }
   };
 
