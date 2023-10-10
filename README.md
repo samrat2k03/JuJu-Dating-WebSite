@@ -42,6 +42,43 @@ Follow these instructions to get a local copy of the Juju Dating project up and 
    ```bash
    yarn dev
    ```
+
+### Installation for Docker environment
+#### Start the docker:
+If you can use Make command:
+```
+   make docker-up
+```
+If you don't have Make
+```
+   docker compose up
+```
+
+#### Stop the docker:
+If you can use Make command:
+```
+   make docker-down
+```
+If you don't have Make
+```
+   docker compose down
+```
+
+
+#### Exec into the docker container:
+Connect to the server:
+```
+   make connect-to-server
+   OR
+   docker exec -it node_server bash
+```
+Connect to the client
+```
+   make connect-to-client
+   OR
+   docker exec -it node_client bash
+```
+
 ### Configure environment variables:
 modify `.env` file in the server directory with the following content:
 
