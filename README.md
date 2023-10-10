@@ -49,6 +49,9 @@ modify `.env` file in the server directory with the following content:
 PORT = 3001
 DB = place your mongodb uri
 JWT_TOKEN = your_jwt_secret (or) just give strong string of characters
+CLOUD_NAME = your cloudinary cloud name
+CLOUDINARY_KEY = your cloudinary key
+CLOUDINARY_SECRET = your cloudinary secret
 ```
 🛠️ Customize the placeholders with your actual values for a seamless experience.
 

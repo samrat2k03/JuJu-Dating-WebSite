@@ -39,14 +39,21 @@ app.use(cors({
   origin: 'http://localhost:5173', 
   credentials: true, 
 }));
+//cloudinary setup
+import { v2 as cloudinary } from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+cloudinary.config({
+    cloud_name:process.env.CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_KEY,
+    api_secret:process.env.CLOUDINARY_SECRET
+});
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "/assets");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
+const storage = new CloudinaryStorage({
+    cloudinary,
+    params: {
+        folder: 'CloudinaryDemo',
+        allowedFormats: ['jpeg', 'png', 'jpg'],
+    }                                                              
 });
 const upload = multer({ storage });
 
