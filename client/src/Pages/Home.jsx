@@ -38,11 +38,14 @@ const Home = () => {
   };
   return (
     <>
-      <div className="home_page">
-        <h4>
-          Welcome <span>{username}</span>
-        </h4>
-        <button onClick={Logout}>LOGOUT</button>
+      <div className="home_page px-10 py-20 flex flex-wrap justify-around items-center overflow-hidden min-h-screen bg-gradient-to-r from-rose-100 to-teal-100">
+        <div className="title flex flex-col justify-center align-center">
+          <h4 className="text-8xl font-bold">Find the </h4>
+          <h4 className="text-8xl font-bold text-red-500">Love </h4>
+          <h4 className="text-8xl font-bold"> of your life </h4>
+        </div>
+        <img src="/dating-couple-1.png" alt="" className="h-2/6 w-2/6" />
+        {/* <button onClick={Logout}>LOGOUT</button> */}
       </div>
     </>
   );
