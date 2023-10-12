@@ -1,0 +1,54 @@
+version: "3"
+services:
+  server:
+    container_name: node_server
+    build: ./docker/server
+    volumes:
+      - type: bind
+        source: ./server
+        target: /var/www/app
+      - type: volume
+        source: server-node-modules
+        target: /var/www/app/node_modules
+    ports:
+      - "3001:3001"
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+    networks:
+      - node-webapp-network
+
+  client:
+    container_name: node_client
+    build: ./docker/client
+    volumes:
+      - type: bind
+        source: ./client
+        target: /var/www/app
+      - type: volume
+        source: client-node-modules
+        target: /var/www/app/node_modules
+    ports:
+      - "5173:5173"
+
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    volumes:
+      - ./docker/db/mongo:/data/db
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=app_user
+      - MONGO_INITDB_ROOT_PASSWORD=app_password
+      - MONGO_INITDB_DATABASE=admin
+    networks:
+      - node-webapp-network
+networks:
+  node-webapp-network:
+    driver: bridge
+
+volumes:
+  client-node-modules:
+  server-node-modules:
