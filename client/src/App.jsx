@@ -4,14 +4,11 @@ import Home from "./Pages/Home"
 import LoginPage from "./Pages/LoginPage"
 import SignUp from "./Pages/SignUp"
 import { ToastContainer } from "react-toastify"
-
-
 function App() {
- return (
- 
-  <div>
-    <BrowserRouter>
+  return (
     
+    <div>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={< LoginPage/>} />
         <Route path="/signup" element={< SignUp/>} />
