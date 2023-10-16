@@ -105,3 +105,10 @@ We welcome contributions from the community to make Juju Dating Website even bet
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 <p align="center">Peace ✌</p>
+
+### Contributors 
+<a href="https://github.com/samrat2k03/JuJu-Dating-WebSite/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=samrat2k03/JuJu-Dating-WebSite" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
