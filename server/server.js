@@ -40,15 +40,15 @@ app.use(cors({
   credentials: true, 
 }));
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "/assets");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
-});
-const upload = multer({ storage });
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "/assets");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   },
+// });
+// const upload = multer({ storage });
 
 app.use("/api/auth/", AuthRoute);  //for login & signup
 app.use("/", UserVerifyRoute);
@@ -58,7 +58,7 @@ const port = process.env.PORT;
 const { DB_HOST, DB_NAME, DB_PASS, DB_PORT, DB_USER } = process.env;
 
 mongoose
-  .connect(`mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to MongoDb");
     app.listen(port, () => console.log(`Server is running @ ${port}`));
