@@ -15,6 +15,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Your Password is required"],
   },
+  profilePic: {
+    type: String, // Assuming you'll store the URL or path to the profile picture
+  },
   createdAt: {
     type: Date,
     default: new Date(),
